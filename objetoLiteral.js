@@ -21,3 +21,7 @@ exibir1(); // undefined undefined
 
 const exibirNome = exibir1.bind(user);
 exibirNome(); 
+
+exibir1.call(user);
+
+exibir1.apply(user);
