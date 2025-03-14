@@ -1,6 +1,6 @@
 import User from './User.js';
 
-class Admin extends User {
+export default class Admin extends User {
     constructor(nome, email, nascimento, role = 'Admin', ativo = 'true') {
         super(nome, email, nascimento, role, ativo);
     }
@@ -9,6 +9,6 @@ class Admin extends User {
     }
 }
 
-const novoAdmin = new Admin('Nelson', 'n@n.com', '02-02-2002', 'Admin', true);
-console.log(novoAdmin);
-console.log(novoAdmin.criarCurso('Javascript', 20));
+// const novoAdmin = new Admin('Nelson', 'n@n.com', '02-02-2002', 'Admin', true);
+// console.log(novoAdmin);
+// console.log(novoAdmin.criarCurso('Javascript', 20));
