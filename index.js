@@ -7,3 +7,5 @@ const novoUser = new User('Gustavo', 'g@g', '19-10-2002', 'Estudante', true);
 novoUser.nome = 'Nelson';
 console.log(novoUser.exibirInfos());
 console.log(novoUser.nome);
+
+console.log(novoUser.exibirInfos())
