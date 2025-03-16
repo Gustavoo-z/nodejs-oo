@@ -1,11 +1,13 @@
 export default class User {
     #nome
+    #sobrenome
     #email
     #nascimento
     #role
     #ativo
-    constructor(nome, email, nascimento, role, ativo = 'true') {
+    constructor(nome, sobrenome, email, nascimento, role, ativo = 'true') {
         this.#nome = nome;
+        this.#sobrenome = sobrenome
         this.#email = email;
         this.#nascimento = nascimento;
         this.#role = role || "Estudante";
@@ -14,6 +16,12 @@ export default class User {
 
     get nome() {
         return this.#nome;
+    }
+    get sobrenome() {
+        return this.#sobrenome;
+    }
+    get nomeCompleto() {
+        return `${this.#nome} ${this.#sobrenome}`;
     }
     get email() {
         return this.#email;
@@ -32,13 +40,19 @@ export default class User {
         if (novoNome === '') {
             throw new Error('Nome inválido');
         }
-        this.#nome = novoNome;
+        let [nome, ...sobrenome] = novoNome.split(' ');
+        sobrenome = sobrenome.join(' ');
+        this.#nome = nome;
+        this.#sobrenome = sobrenome;
     }
 
     exibirInfos() {
-        return `Nome: ${this.#nome}, Email: ${this.#email}, Nascimento: ${this.#nascimento}, Role: ${this.#role}, Ativo: ${this.#ativo}`;
+        return `Nome: ${this.#nome}, Sobrenome: ${this.#sobrenome}, Email: ${this.#email}, Nascimento: ${this.#nascimento}, Role: ${this.#role}, Ativo: ${this.#ativo}`;
     }
 }
+
+const novoUser = new User('Gustavo', 'Zesczylinski', 'g@g', '19-10-2002', 'Estudante', true);
+console.log(novoUser.nomeCompleto);
 
 // const novoUser = new User('Gustavo', 'g@g.com', '19-10-2002', 'Estudante', true)
 // console.log(novoUser);
