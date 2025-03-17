@@ -5,12 +5,12 @@ export default class User {
     #nascimento
     #role
     #ativo
-    constructor(nome, sobrenome, email, nascimento, role, ativo = 'true') {
+    constructor(nome, sobrenome, email, nascimento, role = 'User', ativo = 'true') {
         this.#nome = nome;
         this.#sobrenome = sobrenome
         this.#email = email;
         this.#nascimento = nascimento;
-        this.#role = role || "Estudante";
+        this.#role = role || "User";
         this.#ativo = ativo;
     }
 
@@ -46,13 +46,29 @@ export default class User {
         this.#sobrenome = sobrenome;
     }
 
+    // exibirInfos() {
+    //     return `${this.#nome} ${this.#sobrenome}, ${this.#email},  ${this.#nascimento}, ${this.#role}, ${this.#ativo}`;
+    // }
+
     exibirInfos() {
-        return `Nome: ${this.#nome}, Sobrenome: ${this.#sobrenome}, Email: ${this.#email}, Nascimento: ${this.#nascimento}, Role: ${this.#role}, Ativo: ${this.#ativo}`;
+        if (this.role === 'User') {
+            return `Dados user - ${this.nomeCompleto}`
+        }
+        if (this.role === 'Admin') {
+            return `Dados admin - ${this.nomeCompleto}, ${this.role}`
+        }
+        if (this.role === 'Docente') {
+            return `Dados docente - ${this.nomeCompleto}, ${this.role}`
+        }
+    }
+
+    static exibirInfosGenericas(nome, email) {
+        return `${nome}, ${email}`
     }
 }
 
-const novoUser = new User('Gustavo', 'Zesczylinski', 'g@g', '19-10-2002', 'Estudante', true);
-console.log(novoUser.nomeCompleto);
+// const novoUser = new User('Gustavo', 'Zesczylinski', 'g@g', '19-10-2002', 'Estudante', true);
+// console.log(novoUser.nomeCompleto);
 
 // const novoUser = new User('Gustavo', 'g@g.com', '19-10-2002', 'Estudante', true)
 // console.log(novoUser);
